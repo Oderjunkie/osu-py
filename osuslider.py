@@ -5,7 +5,7 @@ class Slider(OsuObject, pg.sprite.Sprite):
         y = int(obj[1])
         sound = int(obj[4])
         t = int(obj[2])
-        timing = [i for i in settings.importing.timingpoints if (int(i[0])<t and i[6]=='1')].pop()
+        timing = [i for i in settings.importing.timingpoints if (int(i[0])=<t and i[6]=='1')].pop()
         timing = timing[1]
         length = int(obj[7])
         self.anchor = [i.split(':') for i in obj[5][2:].split('|')]
