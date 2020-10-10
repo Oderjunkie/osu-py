@@ -109,7 +109,7 @@ while running:
     #print(mills)
     window.blit(bg, bg_pos)
     rects = [hitobject.draw(beat, mills, window) for hitobject in hitobjects if -beat.objar()[1]-1500<hitobject.t[0]-mills<beat.objar()[0]]
-    [[pg.display.update(j.inflate(5,5)) for j in i] for i in rects]
+    [[pg.display.update(j.inflate(15,15)) for j in i] for i in rects]
     #window.blit(MOUSE(76), [int(mouse_pos[0]-38), int(mouse_pos[1]-38)])
     root.update_idletasks()
     root.update()
