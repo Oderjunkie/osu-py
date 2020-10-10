@@ -31,7 +31,7 @@ class Circle(OsuObject, pg.sprite.Sprite):
         hitcircle.fill(tuple(self.color), special_flags=pg.BLEND_RGB_MULT)
         hitcircle.fill((255, 255, 255, alpha), special_flags=pg.BLEND_RGBA_MULT)
         hitcircleoverlay.fill((255, 255, 255, alpha), special_flags=pg.BLEND_RGBA_MULT)
-        [window.blit(*i) for i in [[hitcircle, [int(self.x+cs/2), int(self.y+cs/2)]],\
+        return [window.blit(*i) for i in [[hitcircle, [int(self.x+cs/2), int(self.y+cs/2)]],\
                  [hitcircleoverlay, [int(self.x+cs/2), int(self.y+cs/2)]],\
                  [number, [int(self.x+(3*cs/8)+cs/2), int(self.y+(76*cs/256)+cs/2)]],\
                  [big_boi, [int((self.x-cs*size/2)+cs), int((self.y-cs*size/2)+cs)]]]]
