@@ -92,19 +92,28 @@ def done():
     running = False
 frame = 0
 root.protocol("WM_DELETE_WINDOW", done)
+window.blit(bg, bg_pos)
+pg.display.update()
 while running:
     frame = frame + 1
     clock.tick(60)
-    window.blit(bg, bg_pos)
+    #window.fill((mills%256,mills%256,mills%256))
+    #mouse_pos = pg.mouse.get_pos()
     click = False
+    deltatime = clock.get_time()*0.06
     keys = pg.key.get_pressed()
     if keys[pg.K_RIGHT]:
-        mills += 100/6
+        mills += 100/6*deltatime
     if keys[pg.K_LEFT]:
-        mills -= 100/6
-    [hitobject.draw(beat, mills, window) for hitobject in hitobjects if -beat.objar()[1]-1500<hitobject.t[0]-mills<beat.objar()[0]]
-    pg.display.update()
+        mills -= 100/6*deltatime
+    #print(mills)
+    window.blit(bg, bg_pos)
+    rects = [hitobject.draw(beat, mills, window) for hitobject in hitobjects if -beat.objar()[1]-1500<hitobject.t[0]-mills<beat.objar()[0]]
+    [[pg.display.update(j.inflate(5,5)) for j in i] for i in rects]
+    #window.blit(MOUSE(76), [int(mouse_pos[0]-38), int(mouse_pos[1]-38)])
     root.update_idletasks()
     root.update()
+root.destroy()
+pg.quit()
 root.destroy()
 pg.quit()
